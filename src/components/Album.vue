@@ -1,33 +1,57 @@
 <template>
-  <v-row width="200">
-    <v-col v-for="n in pokemons" :key="n.id" class="d-flex child-flex" cols="3">
-      <v-img
-        :lazy-src="n.images.large"
-        :src="n.images.large"
-        aspect-ratio="1"
-        class="grey lighten-2"
-        @click="handleClick(n)"
+  <div>
+    <v-row width="200">
+      <v-col
+        v-for="n in pageOfItems"
+        :key="n.id"
+        class="d-flex child-flex"
+        cols="3"
       >
-        <template v-slot:placeholder>
-          <v-row class="fill-height ma-0" align="center" justify="center">
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-      </v-img>
-    </v-col>
-  </v-row>
+        <v-img
+          :lazy-src="n.images.large"
+          :src="n.images.large"
+          aspect-ratio="1"
+          class="grey lighten-2"
+          @click="handleClick(n)"
+        >
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </v-col>
+    </v-row>
+
+    <div class="card-footer pb-0 pt-3 text-center">
+      <jw-pagination
+        :items="pokemons"
+        @changePage="onChangePage"
+      ></jw-pagination>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    image: "",
+    pageOfItems: [],
+  }),
+
   props: {
     pokemons: [],
   },
   methods: {
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
+    },
     handleClick(n) {
+      this.$router.push({ path: "/details/" + n.id });
       console.log(n);
     },
   },

@@ -9,7 +9,7 @@
             filled
             clear-icon="mdi-close-circle"
             clearable
-            label="Pokemon"
+            label="Card"
             type="text"
           ></v-text-field>
         </v-col>

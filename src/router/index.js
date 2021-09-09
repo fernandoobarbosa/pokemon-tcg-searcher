@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Details from "../views/Details.vue";
 
 Vue.use(VueRouter);
 
@@ -10,9 +11,15 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {
+    path: "/details/:pokemonCardId",
+    name: "Details",
+    component: Details,
+  },
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes,
 });
 
