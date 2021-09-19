@@ -8,9 +8,10 @@
         cols="3"
       >
         <v-img
+          zoom="n.images.large"
           :lazy-src="n.images.large"
           :src="n.images.large"
-          aspect-ratio="1"
+          aspect-ratio="0.8"
           class="grey lighten-2"
           @click="handleClick(n)"
         >
@@ -25,8 +26,8 @@
         </v-img>
       </v-col>
     </v-row>
-
-    <div class="card-footer pb-0 pt-3 text-center">
+    <br />
+    <div class="card-footer pb-0 pt-3 text-center" v-if="pokemons.length > 0">
       <jw-pagination
         :items="pokemons"
         @changePage="onChangePage"

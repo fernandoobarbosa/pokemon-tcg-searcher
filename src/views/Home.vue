@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Album from "../components/Album";
-import Form from "../components/Form";
+import Album from "../components/Home/Album";
+import Form from "../components/Home/Form";
 import axios from "axios";
 
 export default {
@@ -21,10 +21,10 @@ export default {
     Form,
   },
   methods: {
-    async getPokemonInformation(pokemonName) {
+    async getPokemonInformation(cardName) {
       try {
         const { data } = await axios.get(
-          "https://api.pokemontcg.io/v2/cards?q=name:" + pokemonName,
+          "https://api.pokemontcg.io/v2/cards?q=name:" + cardName,
           {
             headers: {
               "x-api-key": "47fa473f-b204-40c0-8dac-ccc5109a9c37",
@@ -34,7 +34,7 @@ export default {
         console.log(data.data);
         this.pokemons = data.data;
       } catch (e) {
-        console.log(e);
+        alert("no records for this card");
       }
     },
   },

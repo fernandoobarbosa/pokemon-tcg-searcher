@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CardDetails from "../components/CardDetails";
+import CardDetails from "../components/Details/CardDetails";
 import axios from "axios";
 export default {
   data: () => ({
