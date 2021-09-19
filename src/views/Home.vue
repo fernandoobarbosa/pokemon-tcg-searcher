@@ -38,5 +38,12 @@ export default {
       }
     },
   },
+  beforeMount() {
+    var cardSearched = localStorage.getItem("cardSearched");
+
+    if (cardSearched !== "") this.getPokemonInformation(cardSearched);
+
+    localStorage.setItem("cardSearched", "");
+  },
 };
 </script>

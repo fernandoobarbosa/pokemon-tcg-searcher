@@ -53,6 +53,7 @@ export default {
     },
     handleClick(n) {
       this.$router.push({ path: "/details/" + n.id });
+      localStorage.setItem("cardSearched", n.name);
       console.log(n);
     },
   },
